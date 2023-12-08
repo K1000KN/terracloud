@@ -1,0 +1,44 @@
+---
+
+- name: Install pip3
+  apt:
+    name:
+    - python3-pip
+    - docker
+    - docker-compose
+
+- name: add gitlab runner
+  shell: curl -LJO https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_amd64.deb
+  run_once: true
+
+- name: install gitlab runner
+  shell: sudo dpkg -i gitlab-runner_amd64.deb
+  run_once: true
+
+- name: ensure required pip-packages are installed
+  pip:
+    name:
+      - docker
+      - PyYAML
+      - docker-compose
+
+- name: create and run the docker compose for gitlab
+  community.docker.docker_compose:
+    project_name: gitlab-server
+    definition:
+     services:
+      gitlab-ce:
+        ports:
+         - 3000:80
+        container_name: gitlab
+        restart: always
+        volumes:
+            - /srv/gitlab/config:/etc/gitlab
+            - /srv/gitlab/logs:/var/log/gitlab
+            - /srv/gitlab/data:/var/opt/gitlab
+        image: gitlab/gitlab-ce:latest
+
+- name: get the sample-app
+  shell: git clone https://gitlab.infra.connectwork.fr/epitech/sample-app.git
+  args:
+   creates: "/home/{{ ansible_user }}/sample-app"

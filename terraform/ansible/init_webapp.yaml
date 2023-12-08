@@ -1,0 +1,10 @@
+---
+- hosts: webapp
+  become: yes
+
+  roles:
+    - login
+    - docker_gitlab
+    - php
+    - composer
+    - network

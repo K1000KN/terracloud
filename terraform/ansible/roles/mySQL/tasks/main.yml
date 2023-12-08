@@ -1,0 +1,4 @@
+- include_tasks: packages.yml
+- include_tasks: mysqld.yml
+- include_tasks: db.yml
+- include_tasks: create_dirs.yaml

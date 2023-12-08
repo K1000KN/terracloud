@@ -1,0 +1,21 @@
+- name: creating mysql user
+  mysql_user:
+    name: "{{ db_user }}"
+    password: "{{ db_pass }}"
+    priv: '*.*:ALL'
+    host: '%'
+    login_unix_socket: /run/mysqld/mysqld.sock
+    state: present
+
+- name: allow remote access to user named user database
+  mysql_user:
+    name: "{{ db_user }}"
+    host_all: yes
+    login_unix_socket: /run/mysqld/mysqld.sock
+    state: present
+
+- name: creating database
+  mysql_db:
+    name: "{{ db_name }}"
+    state: present
+    login_unix_socket: /run/mysqld/mysqld.sock

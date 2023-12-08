@@ -1,0 +1,8 @@
+---
+
+db_user: nsa_user
+db_pass: nsadatabase
+db_name: nsadb
+packages:
+      - mysql-server
+      - python3-pip

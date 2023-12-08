@@ -1,0 +1,9 @@
+---
+
+- name: supress login message in ssh
+  file:
+    path: "/home/{{ username }}/.hushlogin"
+    mode: 0644
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    state: touch

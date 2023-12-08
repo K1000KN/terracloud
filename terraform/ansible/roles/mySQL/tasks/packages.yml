@@ -1,0 +1,13 @@
+- name: Update packages
+  apt:
+    update_cache: yes
+    upgrade: yes
+
+- name: Installing Mysql and dependencies
+  apt:
+    name: "{{ packages }}"
+    state: present
+
+- name: mysql connector
+  pip:
+    name: pymysql
