@@ -9,6 +9,10 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Azure CLI
+        uses: azure/setup-azure-cli@v1
+        with:
+          azure-cli-version: '2.31.0'
       - name: Azure login
         uses: azure/login@v1
         with:
