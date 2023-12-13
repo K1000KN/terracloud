@@ -11,6 +11,8 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Echo PASQUEFAUTQUECAMARCHE
+        run: echo $AZURE_CREDENTIALS && ls ~/.azure/
       - name: Azure login
         uses: azure/login@v1
         with:
@@ -22,5 +24,4 @@ jobs:
           azcliversion: latest
           inlineScript: |
             az account show
-      - name: Echo PASQUEFAUTQUECAMARCHE
-        run: echo $AZURE_CREDENTIALS && ls ~/.azure/
+
