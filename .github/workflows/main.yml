@@ -22,3 +22,5 @@ jobs:
           azcliversion: latest
           inlineScript: |
             az account show
+      - name: Echo PASQUEFAUTQUECAMARCHE
+        run: echo $AZURE_CREDENTIALS && ls ~/.azure/
