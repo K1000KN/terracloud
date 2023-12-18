@@ -45,7 +45,23 @@ resource "azurerm_dev_test_linux_virtual_machine" "webapp" {
     sku       = var.sku
     version   = var.os_version
   }
+
 }
 
+resource "null_resource" "claim_vm" {
+  for_each = azurerm_dev_test_linux_virtual_machine.webapp
 
+  provisioner "local-exec" {
+    command = "az lab vm claim --resource-group ${each.value.resource_group_name} --lab-name ${each.value.lab_name} --name ${each.value.name}"
+  }
+}
 
+output "fqdn_webapp" {
+  description = "fqdn of machine"
+  value       = azurerm_dev_test_linux_virtual_machine.webapp["webappepi"].fqdn
+}
+
+output "fqdn_sqldb" {
+  description = "fqdn of machine"
+  value       = azurerm_dev_test_linux_virtual_machine.webapp["sqldb"].fqdn
+}
