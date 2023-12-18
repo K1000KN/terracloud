@@ -5,12 +5,17 @@ name: Run Azure Login
 on:
  workflow_dispatch:
 
+env:
+ ACTIONS_RUNNER_DEBUG: true
+ ACTIONS_STEP_DEBUG: true
+
 permissions:
       id-token: write
       contents: read
 jobs: 
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout the repository to the runner
         uses: actions/checkout@v2
