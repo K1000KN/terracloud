@@ -1,0 +1,33 @@
+# File: .github/workflows/workflow.yml
+
+name: Run Azure Login
+
+on:
+ workflow_dispatch:
+
+permissions:
+      id-token: write
+      contents: read
+jobs: 
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository to the runner
+        uses: actions/checkout@v2
+        
+      - name: Azure login
+        run: az login
+
+      - name: Terraform init
+        id: init
+        working-directory: ./terraform
+        run: terraform init
+
+      - name: Terraform plan
+        id: plan
+        run: terraform plan -no-color -input=false
+        continue-on-error: true
+
+      - name: Terraform Apply
+        working-directory: ./terraform
+        run: terraform apply -auto-approve -input=false
