@@ -25,9 +25,10 @@ jobs:
 
       - name: Terraform plan
         id: plan
+        working-directory: ./terraform
         run: terraform plan -no-color -input=false
         continue-on-error: true
 
       - name: Terraform Apply
         working-directory: ./terraform
-        run: terraform destroy -auto-approve -input=false
+        run: terraform apply -auto-approve -input=false
