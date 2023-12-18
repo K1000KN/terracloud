@@ -30,4 +30,4 @@ jobs:
 
       - name: Terraform Apply
         working-directory: ./terraform
-        run: terraform apply -auto-approve -input=false
+        run: terraform destroy -auto-approve -input=false
