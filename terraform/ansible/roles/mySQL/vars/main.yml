@@ -1,8 +1,8 @@
 ---
 
-db_user: nsa_user
-db_pass: nsadatabase
-db_name: nsadb
+db_user: tclo_user
+db_pass: tclodatabase
+db_name: tclodb
 packages:
       - mysql-server
       - python3-pip

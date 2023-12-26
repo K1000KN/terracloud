@@ -1,10 +1,9 @@
 ---
-- hosts: webapp
+- hosts: sqldb
   become: yes
 
   roles:
     - login
     - composer
     - php
-    - github_project
-    - traefik
+    - mySQL
