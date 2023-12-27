@@ -17,10 +17,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: disable ssh key verification
-        run: |
-             echo "Host github.com" >> ~/.ssh/config
-             echo " StrictHostKeyChecking no" >> ~/.ssh/config
 
       - name: Checkout the repository to the runner
         uses: actions/checkout@v2
