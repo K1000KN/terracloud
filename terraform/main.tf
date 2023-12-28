@@ -62,7 +62,7 @@ resource "null_resource" "ansible_sql" {
     connection {
       host     = "github.com"
       agent    = true
-      host_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcLsAJpJ1ZgIlpXvOqQv+Xy4/yA35KJHedDQGzKH/aG"
+      host_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcLsAJpJ1ZgIlpXvOqQv+Xy4/yA35KJHedDQGzKH/aG kamil@DESKTOP-SJGJ7FP"
     }
   }
   depends_on = [null_resource.claim_vm]
@@ -74,7 +74,7 @@ resource "null_resource" "ansible_webapp" {
     connection {
       host     = "github.com"
       agent    = true
-      host_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcLsAJpJ1ZgIlpXvOqQv+Xy4/yA35KJHedDQGzKH/aG"
+      host_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcLsAJpJ1ZgIlpXvOqQv+Xy4/yA35KJHedDQGzKH/aG kamil@DESKTOP-SJGJ7FP"
     }
   }
   depends_on = [null_resource.claim_vm]
