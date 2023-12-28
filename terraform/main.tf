@@ -59,6 +59,11 @@ resource "null_resource" "claim_vm" {
 resource "null_resource" "ansible_sql" {
   provisioner "local-exec" {
     command = "ansible-playbook -i ./ansible/hosts ./ansible/init_sqldb.yaml"
+    connection {
+      host     = "github.com"
+      agent    = true
+      host_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcLsAJpJ1ZgIlpXvOqQv+Xy4/yA35KJHedDQGzKH/aG"
+    }
   }
   depends_on = [null_resource.claim_vm]
 }
@@ -66,8 +71,13 @@ resource "null_resource" "ansible_sql" {
 resource "null_resource" "ansible_webapp" {
   provisioner "local-exec" {
     command = "ansible-playbook -i ./ansible/hosts ./ansible/init_webapp.yaml"
+    connection {
+      host     = "github.com"
+      agent    = true
+      host_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcLsAJpJ1ZgIlpXvOqQv+Xy4/yA35KJHedDQGzKH/aG"
+    }
   }
-  depends_on = [null_resource.claim_vm  ]
+  depends_on = [null_resource.claim_vm]
 }
 
 
