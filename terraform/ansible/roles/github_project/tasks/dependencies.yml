@@ -10,13 +10,6 @@
    url: https://cdn.githubraw.com/K1000KN/1a78b7eff814b3a1cfe5c6733a7d3964/raw/b3585b88b5902b53eadcfcd3c076fa418d3742f9/.env
    dest: /home/{{ ansible_user }}/terracloud/.env
 
-- name: update package.json
-  composer:
-   command: update
-   global_command: false
-   working_dir: /home/{{ ansible_user }}/terracloud
-  become: false
-
 - name: run the sample-app
   composer:
    command: install
