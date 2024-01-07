@@ -38,3 +38,10 @@ jobs:
       - name: Terraform Apply
         working-directory: ./terraform
         run: terraform apply -auto-approve -input=false
+
+        
+      - name: ansible sql
+        working-directory: ./terraform/ansible
+        run:   |
+               ansible-playbook init_sqldb.yaml --ssh-common-args='-o StrictHostKeyChecking=add-new'
+               ansible-playbook init_webapp.yaml
