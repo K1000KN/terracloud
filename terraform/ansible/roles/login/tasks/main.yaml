@@ -2,8 +2,8 @@
 
 - name: supress login message in ssh
   file:
-    path: "/home/{{ username }}/.hushlogin"
+    path: "/home/{{ ansible_user }}/.hushlogin"
     mode: 0644
-    owner: "{{ username }}"
-    group: "{{ username }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     state: touch

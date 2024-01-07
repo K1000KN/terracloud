@@ -1,6 +1,6 @@
 ---
 - hosts: sqldb
-  become: yes
+  become: true
 
   roles:
     - login
