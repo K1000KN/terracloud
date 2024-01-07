@@ -4,6 +4,6 @@
 
   roles:
     - login
-    - composer
     - php
+    - composer
     - mySQL
