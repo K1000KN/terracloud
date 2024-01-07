@@ -1,6 +1,6 @@
 [webapp]
-webappepi.westeurope.cloudapp.azure.com ansible_user=userwebapp ansible_connection=ssh ansible_ssh_private_key_file=../azure
+webappepi.westeurope.cloudapp.azure.com ansible_user=userwebapp ansible_connection=ssh ansible_ssh_private_key_file=../azure ansible_ssh_extra_args='-o StrictHostKeyChecking=add-new'
 
 [sqldb]
-sqldb.westeurope.cloudapp.azure.com ansible_user=userdb ansible_connection=ssh ansible_ssh_private_key_file=../azure
+sqldb.westeurope.cloudapp.azure.com ansible_user=userdb ansible_connection=ssh ansible_ssh_private_key_file=../azure ansible_ssh_extra_args='-o StrictHostKeyChecking=add-new'
 
