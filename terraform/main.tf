@@ -56,21 +56,6 @@ resource "null_resource" "claim_vm" {
   }
 }
 
-resource "null_resource" "ansible_sql" {
-  provisioner "local-exec" {
-    command = "ansible-playbook -i ./ansible/hosts ./ansible/init_sqldb.yaml --ssh-common-args='-o StrictHostKeyChecking=add-new'"
-  }
-  depends_on = [null_resource.claim_vm]
-}
-
-resource "null_resource" "ansible_webapp" {
-  provisioner "local-exec" {
-    command = "ansible-playbook -i ./ansible/hosts ./ansible/init_webapp.yaml"
-  }
-  depends_on = [null_resource.claim_vm]
-}
-
-
 output "fqdn_webapp" {
   description = "fqdn of machine"
   value       = azurerm_dev_test_linux_virtual_machine.webapp["webappepi"].fqdn
