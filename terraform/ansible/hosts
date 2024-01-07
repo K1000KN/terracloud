@@ -1,6 +1,6 @@
 [webapp]
-webappepi.westeurope.cloudapp.azure.com ansible_user=userwebapp ansible_connection=ssh ansible_ssh_private_key_file=/home/kamil/Epitech/MSC2/TCLO/Terracloud/azure
+webappepi.westeurope.cloudapp.azure.com ansible_user=userwebapp ansible_connection=ssh ansible_ssh_private_key_file=./azure
 
 [sqldb]
-sqldb.westeurope.cloudapp.azure.com ansible_user=userdb ansible_connection=ssh ansible_ssh_private_key_file=/home/kamil/Epitech/MSC2/TCLO/Terracloud/azure
+sqldb.westeurope.cloudapp.azure.com ansible_user=userdb ansible_connection=ssh ansible_ssh_private_key_file=./azure
 
