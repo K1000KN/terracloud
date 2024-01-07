@@ -15,8 +15,10 @@
    command: install
    global_command: false
    working_dir: /home/{{ ansible_user }}/terracloud
+  become: false
 
 - name: Run PHP Artisan Serve
   shell: php artisan serve -d --port=80
   args:
    chdir: /home/{{ ansible_user }}/terracloud
+  become: false
