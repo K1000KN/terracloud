@@ -39,8 +39,11 @@ jobs:
         working-directory: ./terraform
         run: terraform apply -auto-approve -input=false
 
+      - name: fix ssh
+        working-directory: ./terraform
+        run: chmod 400 azure
         
-      - name: ansible sql
+      - name: ansible playbook
         working-directory: ./terraform/ansible
         run:   |
                ansible-playbook init_sqldb.yaml
