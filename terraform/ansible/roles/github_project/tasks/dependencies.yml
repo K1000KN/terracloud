@@ -25,8 +25,18 @@
    working_dir: /home/{{ ansible_user }}/terracloud
   become: false
 
-- name: Run PHP Artisan Serve
-  shell: php artisan serve --port=80 &
+- name: Run PHP Artisan migrate
+  shell: php artisan migrate
   args:
    chdir: /home/{{ ansible_user }}/terracloud
-  become: false
+
+- name: Run PHP Artisan db:seed
+  shell: php artisan db:seed
+  args:
+   chdir: /home/{{ ansible_user }}/terracloud
+
+- name: Run PHP Artisan Serve
+  shell: php artisan serve --host=0.0.0.0 &
+  args:
+   chdir: /home/{{ ansible_user }}/terracloud
+
