@@ -46,5 +46,5 @@ jobs:
       - name: ansible playbook
         working-directory: ./terraform/ansible
         run:   |
-               ansible-playbook init_sqldb.yaml
-               ansible-playbook init_webapp.yaml
+               ansible-playbook init_sqldb.yaml --private-key PRIVATE_KEY_FILE
+               ansible-playbook init_webapp.yaml --private-key PRIVATE_KEY_FILE
