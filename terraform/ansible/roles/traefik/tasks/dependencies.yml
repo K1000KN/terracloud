@@ -1,10 +1,5 @@
 ---
 
-- name: get the sample-app
-  shell: git clone https://github.com/K1000KN/terracloud.git
-  args:
-   creates: "/home/{{ ansible_user }}/terracloud"
-
 - name: Unarchive tar archive
   ansible.builtin.unarchive:
     src: https://github.com/traefik/traefik/releases/download/v2.10.7/traefik_v2.10.7_linux_amd64.tar.gz
@@ -13,13 +8,13 @@
 
 - name: Download traefik yaml
   get_url:
-   url: https://cdn.githubraw.com/K1000KN/78962ff7b2bd4f772664e18ed552c1c0/raw/6859775a719d95cf7605ab06262dbe2342256b00/traefik.yml
+   url: {{ traefik_file }}
    dest: /home/{{ ansible_user }}
 
-- name: Download dyynamic_conf yaml
+- name: Download dynamic_conf yaml
   get_url:
-   url: https://cdn.githubraw.com/K1000KN/da8a18c0baa1bf0f93cacd3feb32006e/raw/e9d822064c9a1d25fe5039399ba5da39a0beb968/dynamic_conf.yml
+   url: {{ traefik_conf }}
    dest: /home/{{ ansible_user }}
 
-- name: Run traefik on port 80
-  shell: traefik --configfile=traefik.yml
+- name: Run traefik daemon
+  shell: traefik --configfile=traefik.yml &

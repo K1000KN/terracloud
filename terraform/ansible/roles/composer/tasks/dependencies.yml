@@ -2,8 +2,8 @@
 
 - name: Download script
   get_url:
-   url: https://cdn.githubraw.com/K1000KN/af23faa363316d2ae67c1cab804cd1ad/raw/05035979bf3fcb3fd5e2448e738f3d7d21c2a5c1/install_composer.sh
-   dest: /home/{{ ansible_user }}/install_composer.sh
+   url: {{ compose_file }}
+   dest: /home/{{ ansible_user }}
    mode: '0755'
 
 - name: Execute script
