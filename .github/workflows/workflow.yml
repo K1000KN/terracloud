@@ -39,14 +39,24 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
 
+      - name: Retrieve runner uid and gid
+        id: uid-gid
+        run: |
+             echo "uid=$(id -u)" >> $GITHUB_OUTPUT
+             echo "gid=$(id -g)" >> $GITHUB_OUTPUT
+
       - name: GitHub Actions Ansible Vault
         uses: taichunmin/github-actions-ansible-vault@v1.0.0
+        env:
+          UID: ${{ steps.uid-gid.outputs.uid }}
+          GID: ${{ steps.uid-gid.outputs.gid }}
         with:
          vault_key: ${{ secrets.VAULT_KEY }}
          working-directory: ${{ github.workspace }}
          command: |
                   cd terraform/ansible/group_vars/all && \
-                  ansible-vault decrypt secret.yml
+                  ansible-vault decrypt secret.yml && \
+                  chown $UID:$GID secret.yml
 
       - name: ansible playbook
         working-directory: ${{ github.workspace }}
