@@ -42,6 +42,7 @@ jobs:
       - name: GitHub Actions Ansible Vault
         uses: taichunmin/github-actions-ansible-vault@v1.0.0
         with:
+         working-directory: ./terraform/ansible
          vault_key: ${{ secrets.VAULT_KEY }}
          command: ansible-vault decrypt secret.yml
 
