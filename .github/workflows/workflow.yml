@@ -44,7 +44,7 @@ jobs:
         with:
          vault_key: ${{ secrets.VAULT_KEY }}
          command: |
-                  ls -R /github/home/runner
+                  ls -R $GITHUB_WORKSPACE
 
       # - name: ansible playbook
       #   working-directory: ./ansible
