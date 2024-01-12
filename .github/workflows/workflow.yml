@@ -24,31 +24,31 @@ jobs:
       - name: Checkout the repository to the runner
         uses: actions/checkout@v2
         
-      - name: Azure login
-        run: az login
+      # - name: Azure login
+      #   run: az login
 
-      - name: Terraform init
-        id: init
-        run: terraform init
+      # - name: Terraform init
+      #   id: init
+      #   run: terraform init
 
-      - name: Terraform plan
-        id: plan
-        run: terraform plan -no-color -input=false
-        continue-on-error: true
+      # - name: Terraform plan
+      #   id: plan
+      #   run: terraform plan -no-color -input=false
+      #   continue-on-error: true
 
-      - name: Terraform Apply
-        run: terraform apply -auto-approve -input=false
+      # - name: Terraform Apply
+      #   run: terraform apply -auto-approve -input=false
 
       - name: GitHub Actions Ansible Vault
         uses: taichunmin/github-actions-ansible-vault@v1.0.0
         with:
          vault_key: ${{ secrets.VAULT_KEY }}
          command: |
-                  ls -lR  ${{ github.workspace }} && \
+                  ls -lR  /home/runner/work/terracloud/ && \
                   ansible-vault decrypt secret.yml
 
-      - name: ansible playbook
-        working-directory: ./ansible
-        run:   |
-               ansible-playbook init_sqldb.yaml --private-key PRIVATE_KEY_FILE
-               ansible-playbook init_webapp.yaml --private-key PRIVATE_KEY_FILE
+      # - name: ansible playbook
+      #   working-directory: ./ansible
+      #   run:   |
+      #          ansible-playbook init_sqldb.yaml --private-key PRIVATE_KEY_FILE
+      #          ansible-playbook init_webapp.yaml --private-key PRIVATE_KEY_FILE
