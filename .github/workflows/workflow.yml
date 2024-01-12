@@ -44,7 +44,7 @@ jobs:
         with:
          vault_key: ${{ secrets.VAULT_KEY }}
          command: |
-                  cd /home/runner/work/terracloud/terraform/ansible && \
+                  cd $GITHUB_WORKSPACE/terraform/ansible && \
                   ansible-vault decrypt secret.yml
 
       - name: ansible playbook
