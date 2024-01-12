@@ -15,6 +15,9 @@ permissions:
 jobs: 
   build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+     run:
+       working-directory: ./terraform
 
     steps:
 
@@ -26,17 +29,14 @@ jobs:
 
       - name: Terraform init
         id: init
-        working-directory: ./terraform
         run: terraform init
 
       - name: Terraform plan
         id: plan
-        working-directory: ./terraform
         run: terraform plan -no-color -input=false
         continue-on-error: true
 
       - name: Terraform Apply
-        working-directory: ./terraform
         run: terraform apply -auto-approve -input=false
 
       - name: GitHub Actions Ansible Vault
@@ -44,11 +44,11 @@ jobs:
         with:
          vault_key: ${{ secrets.VAULT_KEY }}
          command: |
-                  cd ../../../terraform/ansible && \
+                  cd ansible && \
                   ansible-vault decrypt secret.yml
 
       - name: ansible playbook
-        working-directory: /terraform/ansible
+        working-directory: ./ansible
         run:   |
                ansible-playbook init_sqldb.yaml --private-key PRIVATE_KEY_FILE
                ansible-playbook init_webapp.yaml --private-key PRIVATE_KEY_FILE
