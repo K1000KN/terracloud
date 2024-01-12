@@ -45,7 +45,8 @@ jobs:
          vault_key: ${{ secrets.VAULT_KEY }}
          working-directory: ${{ github.workspace }}
          command: |
-                  ls
+                  cd terraform/ansible && \
+                  ansible-vault decrypt secret.yml
 
       # - name: ansible playbook
       #   working-directory: ./ansible
