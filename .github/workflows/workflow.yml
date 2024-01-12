@@ -44,8 +44,7 @@ jobs:
         with:
          vault_key: ${{ secrets.VAULT_KEY }}
          command: |
-                  ls /github/home && \
-                  ansible-vault decrypt secret.yml
+                  ls /github/home
 
       # - name: ansible playbook
       #   working-directory: ./ansible
