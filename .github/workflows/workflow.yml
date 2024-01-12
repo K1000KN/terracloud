@@ -43,11 +43,14 @@ jobs:
         uses: taichunmin/github-actions-ansible-vault@v1.0.0
         with:
          vault_key: ${{ secrets.VAULT_KEY }}
-         working-directory: ${{ github.workspace }}/terraform/ansible/group_vars/all
-         command: ansible-vault decrypt secret.yml
+         working-directory: ${{ github.workspace }}
+         command: |
+                  cd /terraform/ansible/group_vars/all && \
+                  ansible-vault decrypt secret.yml
 
       - name: ansible playbook
-        working-directory: ${{ github.workspace }}terraform/ansible
+        working-directory: ${{ github.workspace }}
         run:   |
+               cd terraform/ansible 
                ansible-playbook init_sqldb.yaml --private-key PRIVATE_KEY_FILE
                ansible-playbook init_webapp.yaml --private-key PRIVATE_KEY_FILE
