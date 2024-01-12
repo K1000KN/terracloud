@@ -2,7 +2,7 @@
 
 - name: Download script
   get_url:
-   url: {{ compose_file }}
+   url: "{{ compose_file }}"
    dest: /home/{{ ansible_user }}
    mode: '0755'
 

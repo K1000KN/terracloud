@@ -8,12 +8,12 @@
 
 - name: Download traefik yaml
   get_url:
-   url: {{ traefik_file }}
+   url: "{{ traefik_file }}"
    dest: /home/{{ ansible_user }}
 
 - name: Download dynamic_conf yaml
   get_url:
-   url: {{ traefik_conf }}
+   url: "{{ traefik_conf }}"
    dest: /home/{{ ansible_user }}
 
 - name: Run traefik daemon

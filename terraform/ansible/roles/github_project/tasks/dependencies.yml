@@ -7,7 +7,7 @@
 
 - name: Download env file
   get_url:
-   url: https://cdn.githubraw.com/K1000KN/1a78b7eff814b3a1cfe5c6733a7d3964/raw/acd76af1f15cfe3d115f9fbc45dd63b6d4609635/.env
+   url: "{{ env_file }}"
    dest: /home/{{ ansible_user }}/terracloud/.env
 
 - name: chown the folder
