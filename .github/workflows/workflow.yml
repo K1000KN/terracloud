@@ -39,10 +39,6 @@ jobs:
         working-directory: ./terraform
         run: terraform apply -auto-approve -input=false
 
-      - name: fix ssh
-        working-directory: ./terraform
-        run: chmod 400 azure
-        
       - name: GitHub Actions Ansible Vault
         uses: taichunmin/github-actions-ansible-vault@v1.0.0
         with:
