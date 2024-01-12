@@ -43,8 +43,9 @@ jobs:
         uses: taichunmin/github-actions-ansible-vault@v1.0.0
         with:
          vault_key: ${{ secrets.VAULT_KEY }}
+         working-directory: ${{ github.workspace }}
          command: |
-                  ls -R ${{ github.workspace }}
+                  ls
 
       # - name: ansible playbook
       #   working-directory: ./ansible
