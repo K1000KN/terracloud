@@ -66,5 +66,5 @@ jobs:
         working-directory: ${{ github.workspace }}
         run:   |
                cd terraform/ansible 
-               ansible-playbook init_sqldb.yaml --private-key ./azure
-               ansible-playbook init_webapp.yaml --private-key ./azure
+               ansible-playbook init_sqldb.yaml --private-key ../azure
+               ansible-playbook init_webapp.yaml --private-key ../azure
