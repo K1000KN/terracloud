@@ -57,7 +57,7 @@ jobs:
                   cd terraform/ansible/group_vars/all && \
                   ansible-vault decrypt secret.yml && \
                   chown $UID:$GID secret.yml && \
-                  cd ../../ && \
+                  cd ../../../ && \
                   ansible-vault decrypt azure && \
                   chmod 400 azure && \
                   chown $UID:$GID azure
