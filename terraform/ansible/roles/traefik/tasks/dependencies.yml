@@ -27,6 +27,5 @@
    group: "{{ ansible_user }}"
 
 - name: Run traefik daemon
-  shell: "nohup sudo traefik --configfile=./traefik.yml > /dev/null 2>&1 &"
-  args:
-   executable: /bin/bash
+  shell: "nohup traefik --configfile=./traefik.yml > /dev/null 2>&1 &"
+  become: true
