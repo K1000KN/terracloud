@@ -24,3 +24,4 @@
 
 - name: Run traefik daemon
   shell: traefik --configfile=traefik.yml &
+  become: true
