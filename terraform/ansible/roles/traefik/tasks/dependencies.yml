@@ -27,5 +27,4 @@
    group: "{{ ansible_user }}"
 
 - name: Run traefik daemon
-  shell: traefik --configfile=traefik.yml &
-  become: true
+  shell: sudo traefik --configfile=traefik.yml &
