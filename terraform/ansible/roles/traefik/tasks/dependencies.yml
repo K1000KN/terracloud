@@ -16,11 +16,15 @@
   get_url:
    url: "{{ traefik_file }}"
    dest: /home/{{ ansible_user }}
+   owner: "{{ ansible_user }}"
+   group: "{{ ansible_user }}"
 
 - name: Download dynamic_conf yaml
   get_url:
    url: "{{ traefik_conf }}"
    dest: /home/{{ ansible_user }}
+   owner: "{{ ansible_user }}"
+   group: "{{ ansible_user }}"
 
 - name: Run traefik daemon
   shell: traefik --configfile=traefik.yml &
