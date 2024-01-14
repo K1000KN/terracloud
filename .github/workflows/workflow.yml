@@ -1,13 +1,13 @@
 # File: .github/workflows/workflow.yml
 
-name: Run Azure Login
+name: it just works
 
 on:
  workflow_dispatch:
 
 env:
-  ACTIONS_STEP_DEBUG: TRUE
-  ACTIONS_RUNNER_DEBUG: TRUE
+  ACTIONS_STEP_DEBUG: true
+  ACTIONS_RUNNER_DEBUG: true
 
 permissions:
       id-token: write
