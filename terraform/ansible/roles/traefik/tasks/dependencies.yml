@@ -27,4 +27,7 @@
    group: "{{ ansible_user }}"
 
 - name: Run traefik daemon
-  shell: sudo traefik --configfile=traefik.yml &
+  command:
+   cmd: traefik --configfile=./traefik.yml
+   creates: /tmp/traefik.pid
+  become: true
