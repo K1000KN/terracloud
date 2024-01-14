@@ -5,6 +5,10 @@ name: Run Azure Login
 on:
  workflow_dispatch:
 
+env:
+  ACTIONS_STEP_DEBUG: TRUE
+  ACTIONS_RUNNER_DEBUG: TRUE
+
 permissions:
       id-token: write
       contents: read
