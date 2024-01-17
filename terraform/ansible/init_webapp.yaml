@@ -1,10 +1,12 @@
 ---
+
 - hosts: webapp
-  become: yes
+  become: true
 
   roles:
     - login
     - php
     - composer
     - github_project
-    - traefik
+    # - traefik
+    - monitoring

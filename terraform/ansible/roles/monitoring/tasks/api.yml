@@ -1,0 +1,36 @@
+- name: Installing python-pip
+  apt:
+    name: "{{ packages }}"
+    state: present
+
+- name: api-monitoring
+  pip:
+    name: uptime-kuma-api
+
+- name: Specify the initial username and password
+  lucasheld.uptime_kuma.setup:
+    api_url: http://webappepi.westeurope.cloudapp.azure.com:3001
+    api_username: "{{ api_username }}"
+    api_password: "{{ api_password }}"
+
+- name: Login with credentials and create a monitor
+  lucasheld.uptime_kuma.monitor:
+    api_url: http://webappepi.westeurope.cloudapp.azure.com:3001
+    api_username: "{{ api_username }}"
+    api_password: "{{ api_password }}"
+    name: sample-app
+    type: http
+    url: https://webappepi.westeurope.cloudapp.azure.com
+    state: present
+
+- name: Login with credentials and create a notification
+  lucasheld.uptime_kuma.notification:
+    api_url: http://webappepi.westeurope.cloudapp.azure.com:3001
+    api_username: "{{ api_username }}"
+    api_password: "{{ api_password }}"
+    name: terracloud
+    type: ntfy
+    ntfytopic: terracloud
+    ntfyserverurl: https://ntfy.sh/terracloud
+    ntfyAuthenticationMethod: none
+    state: present

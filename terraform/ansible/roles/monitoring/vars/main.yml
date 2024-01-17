@@ -1,5 +1,4 @@
 ---
 
 packages:
-      - mysql-server
       - python3-pip
