@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Azure login
-        run: az login
+        run: az login --use-device-code 
 
       - name: Terraform init
         id: init
