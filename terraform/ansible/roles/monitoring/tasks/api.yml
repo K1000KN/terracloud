@@ -14,7 +14,7 @@
     api_url: http://webappepi.westeurope.cloudapp.azure.com:3001
     api_username: "{{ api_username }}"
     api_password: "{{ api_password }}"
-    name: sample-app
+    name: php-app
     type: http
     maxretries: 0
     notification_names: terracloud
