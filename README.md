@@ -4,7 +4,6 @@
 - Site en PHP
 - Gestion schéma DB 
 - Tests
-- Déploiement kube
 
 ## Avant tout votre fichier .env 
 
