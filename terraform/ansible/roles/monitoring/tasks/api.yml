@@ -18,6 +18,7 @@
     type: ntfy
     ntfytopic: terracloud
     ntfyPriority: 5
+    ntfyserverurl: https://ntfy.sh
     ntfyAuthenticationMethod: none
     state: present
 
