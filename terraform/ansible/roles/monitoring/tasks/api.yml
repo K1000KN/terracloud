@@ -16,8 +16,9 @@
     api_password: "{{ api_password }}"
     name: sample-app
     type: http
+    maxretries: 0
     notification_names: terracloud
-    url: https://webappepi.westeurope.cloudapp.azure.com
+    url: http://webappepi.westeurope.cloudapp.azure.com:8000
     state: present
 
 - name: Login with credentials and create a notification
@@ -29,6 +30,5 @@
     type: ntfy
     ntfytopic: terracloud
     ntfyPriority: 5
-    ntfyserverurl: https://ntfy.sh/terracloud
     ntfyAuthenticationMethod: none
     state: present
