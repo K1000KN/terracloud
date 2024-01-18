@@ -9,18 +9,6 @@
     api_username: "{{ api_username }}"
     api_password: "{{ api_password }}"
 
-- name: Login with credentials and create a monitor
-  lucasheld.uptime_kuma.monitor:
-    api_url: http://webappepi.westeurope.cloudapp.azure.com:3001
-    api_username: "{{ api_username }}"
-    api_password: "{{ api_password }}"
-    name: php-app
-    type: http
-    maxretries: 0
-    notification_names: terracloud
-    url: https://webappepi.westeurope.cloudapp.azure.com
-    state: present
-
 - name: Login with credentials and create a notification
   lucasheld.uptime_kuma.notification:
     api_url: http://webappepi.westeurope.cloudapp.azure.com:3001
@@ -31,4 +19,16 @@
     ntfytopic: terracloud
     ntfyPriority: 5
     ntfyAuthenticationMethod: none
+    state: present
+
+- name: Login with credentials and create a monitor
+  lucasheld.uptime_kuma.monitor:
+    api_url: http://webappepi.westeurope.cloudapp.azure.com:3001
+    api_username: "{{ api_username }}"
+    api_password: "{{ api_password }}"
+    name: php-app
+    type: http
+    maxretries: 0
+    notification_names: terracloud
+    url: https://webappepi.westeurope.cloudapp.azure.com
     state: present
