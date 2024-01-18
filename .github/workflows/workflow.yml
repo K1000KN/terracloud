@@ -62,6 +62,10 @@ jobs:
                   chmod 400 azure && \
                   chown $UID:$GID azure
 
+      - name: ansible galaxy collection install
+        working-directory: ${{ github.workspace }}
+        run: ansible-galaxy collection install lucasheld.uptime_kuma
+
       - name: ansible playbook
         working-directory: ${{ github.workspace }}
         run:   |
