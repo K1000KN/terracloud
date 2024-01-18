@@ -24,20 +24,20 @@ jobs:
       - name: Checkout the repository to the runner
         uses: actions/checkout@v2
         
-      - name: Azure login
-        run: az login
+      # - name: Azure login
+      #   run: az login
 
-      - name: Terraform init
-        id: init
-        run: terraform init
+      # - name: Terraform init
+      #   id: init
+      #   run: terraform init
 
-      - name: Terraform plan
-        id: plan
-        run: terraform plan -no-color -input=false
-        continue-on-error: true
+      # - name: Terraform plan
+      #   id: plan
+      #   run: terraform plan -no-color -input=false
+      #   continue-on-error: true
 
-      - name: Terraform Apply
-        run: terraform apply -auto-approve -input=false
+      # - name: Terraform Apply
+      #   run: terraform apply -auto-approve -input=false
 
       - name: Retrieve runner uid and gid
         id: uid-gid
