@@ -2,3 +2,4 @@
 
 packages:
       - python3-pip
+      - docker-ce

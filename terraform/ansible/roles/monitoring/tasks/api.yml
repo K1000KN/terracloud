@@ -1,7 +1,3 @@
-- name: Installing python-pip
-  apt:
-    name: "{{ packages }}"
-    state: present
 
 - name: api-monitoring
   pip:
@@ -20,6 +16,7 @@
     api_password: "{{ api_password }}"
     name: sample-app
     type: http
+    notification_names: terracloud
     url: https://webappepi.westeurope.cloudapp.azure.com
     state: present
 
@@ -31,6 +28,7 @@
     name: terracloud
     type: ntfy
     ntfytopic: terracloud
+    ntfyPriority: 5
     ntfyserverurl: https://ntfy.sh/terracloud
     ntfyAuthenticationMethod: none
     state: present

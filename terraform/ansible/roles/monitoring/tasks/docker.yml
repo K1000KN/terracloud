@@ -1,18 +1,40 @@
-  - name: Deploy uptime-kuma service
-    community.docker.docker_compose:
-      project_name: uptime-kuma
-      definition:
-        version: '3'
-        services:
-          uptime-kuma:
-            restart: always
-            ports:
-              - 3001:3001
-            volumes:
-              - uptime-kuma:/app/data
-            container_name: uptime-kuma
-            image: louislam/uptime-kuma:1
-        volumes:
-          uptime-kuma:
-            external:
-              name: uptime-kuma
+---
+
+  - name: Add Docker GPG apt Key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+  - name: add docker repository to apt
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu focal stable
+      state: present
+
+  - name: Installing docker
+    apt:
+     name: "{{ packages }}"
+     state: present
+
+  - name: Install Docker Module for Python
+    pip:
+      name: docker
+
+  - name: Install docker-compose
+    get_url:
+      url: https://github.com/docker/compose/releases/download/v2.24.0/docker-compose-linux-x86_64
+      dest: /usr/local/bin/docker-compose
+      mode: 'u+x,g+x'
+
+  - name: Change file ownership, group and permissions
+    ansible.builtin.file:
+      path: /usr/local/bin/docker-compose
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+
+  - name: Download docker file
+    get_url:
+     url: "{{ docker_file }}"
+     dest: /home/{{ ansible_user }}/docker-compose.yml
+
+  - name: get the sample-app
+    shell: docker compose up -d

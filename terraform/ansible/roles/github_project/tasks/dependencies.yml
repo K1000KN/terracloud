@@ -36,7 +36,7 @@
    chdir: /home/{{ ansible_user }}/terracloud
 
 - name: Run PHP Artisan Serve
-  shell: php artisan serve --host=0.0.0.0 &
+  shell: "nohup php artisan serve --host=0.0.0.0 > /dev/null 2>&1 &"
   args:
    chdir: /home/{{ ansible_user }}/terracloud
 
