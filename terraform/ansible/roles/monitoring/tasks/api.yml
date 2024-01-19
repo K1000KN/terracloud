@@ -31,5 +31,5 @@
     type: http
     maxretries: 0
     notification_names: terracloud
-    url: https://webappepi.westeurope.cloudapp.azure.com
+    url: http://webappepi.westeurope.cloudapp.azure.com:8000
     state: present
