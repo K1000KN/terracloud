@@ -2,7 +2,9 @@
 
 name: it just works!
 
-on: [push]
+on:
+ workflow_dispatch:
+   
 
 env:
   ACTIONS_STEP_DEBUG: true
